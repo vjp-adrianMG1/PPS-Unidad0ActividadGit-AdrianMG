@@ -22,8 +22,10 @@ class Calculator:
     def on_click(self, char):
         if char == '=':
             try:
+                expression = self.result.get()  # Guardamos la expresión antes de borrarla
+                result = eval(expression)       # Evaluamos
                 self.result.delete(0, tk.END)
-                self.result.insert(tk.END, str(eval(self.result.get())))
+                self.result.insert(tk.END, str(result))
             except Exception:
                 self.result.delete(0, tk.END)
                 self.result.insert(tk.END, "Error")
